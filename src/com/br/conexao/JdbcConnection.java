@@ -23,7 +23,7 @@ public class JdbcConnection {
 		
 		hostName = "localhost";
 		userName = "root";
-		password = "Acessobancoima22@";
+		password = "unkmon";
 		jdbcDriver = "org.gjt.mm.mysql.Driver";
 		dataBaseName = "db_projeto";
 		dataBasePrefix = "jdbc:mysql://";
