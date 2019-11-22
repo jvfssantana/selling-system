@@ -3,26 +3,32 @@ package com.br.telas;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import com.br.classes.Carro;
 import com.br.classes.Concessionaria;
+
+import java.awt.Color;
+import javax.swing.JTextPane;
+import java.awt.Font;
 
 public class CadastrarConcessionaria extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	
-	protected JPanel contentPane;
-	protected JTextField tfNome;
-	protected JTextField tfCidade;
-	protected JTextField tfCep;
-	protected JTextField tfEmail;
-	protected JTextField tfEndereco;
-	protected JTextField tfEstado;
-	protected JTextField tfTelefone;
+	private JPanel contentPane;
+	private JTextField tfNome;
+	private JTextField tfCnpj;
+	private JTextField tfCidade;
+	private JTextField tfCep;
+	private JTextField tfEstado;
+	private JTextPane txtpnInformeOs;
+	private JTextPane txtpnParaEfetuar;
+	private JTextField tfEmail;
 
 	/**
 	 * Launch the application.
@@ -44,86 +50,97 @@ public class CadastrarConcessionaria extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastrarConcessionaria() {
-		setTitle("Concession\u00E1ria Smart");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 421, 314);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.PINK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome");
-		lblNewLabel_1.setBounds(10, 137, 52, 14);
+		JLabel lblNewLabel = new JLabel("Nome:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(10, 103, 72, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Cnpj:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_1.setBounds(213, 103, 86, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblEndereo = new JLabel("Cidade");
-		lblEndereo.setBounds(10, 162, 52, 14);
-		contentPane.add(lblEndereo);
+		JLabel lblNewLabel_2 = new JLabel("Cidade:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(10, 153, 72, 14);
+		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblCep = new JLabel("Cep");
-		lblCep.setBounds(10, 188, 52, 14);
-		contentPane.add(lblCep);
+		JLabel lblNewLabel_3 = new JLabel("Cep:");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(213, 129, 86, 14);
+		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(10, 220, 52, 14);
-		contentPane.add(lblEmail);
-		
-		JLabel label_2 = new JLabel("Endere\u00E7o");
-		label_2.setBounds(201, 137, 64, 14);
-		contentPane.add(label_2);
-		
-		JLabel lblEstado = new JLabel("Estado");
-		lblEstado.setBounds(201, 162, 64, 14);
-		contentPane.add(lblEstado);
-		
-		JLabel lblTelefone = new JLabel("Telefone");
-		lblTelefone.setBounds(201, 188, 64, 14);
-		contentPane.add(lblTelefone);
-		
-		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Concessionaria concessionaria = new Concessionaria(tfNome.getText(), tfEndereco.getText(), tfCidade.getText(), tfEstado.getText(), tfCep.getText(), tfTelefone.getText(), tfEmail.getText());
-				concessionaria.persisteConcessionaria();
-			}
-		});
-		
-		btnBuscar.setBounds(201, 216, 89, 23);
-		contentPane.add(btnBuscar);
+		JLabel lblNewLabel_4 = new JLabel("Estado:");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4.setBounds(213, 154, 86, 14);
+		contentPane.add(lblNewLabel_4);
 		
 		tfNome = new JTextField();
-		tfNome.setBounds(70, 134, 121, 20);
+		tfNome.setBounds(87, 101, 86, 20);
 		contentPane.add(tfNome);
 		tfNome.setColumns(10);
 		
+		tfCnpj = new JTextField();
+		tfCnpj.setBounds(305, 101, 86, 20);
+		contentPane.add(tfCnpj);
+		tfCnpj.setColumns(10);
+		
 		tfCidade = new JTextField();
-		tfCidade.setColumns(10);
-		tfCidade.setBounds(70, 159, 121, 20);
+		tfCidade.setBounds(87, 150, 86, 20);
 		contentPane.add(tfCidade);
+		tfCidade.setColumns(10);
 		
 		tfCep = new JTextField();
-		tfCep.setColumns(10);
-		tfCep.setBounds(70, 185, 121, 20);
+		tfCep.setBounds(305, 126, 86, 20);
 		contentPane.add(tfCep);
-		
-		tfEmail = new JTextField();
-		tfEmail.setColumns(10);
-		tfEmail.setBounds(70, 217, 121, 20);
-		contentPane.add(tfEmail);
-		
-		tfEndereco = new JTextField();
-		tfEndereco.setColumns(10);
-		tfEndereco.setBounds(267, 134, 86, 20);
-		contentPane.add(tfEndereco);
+		tfCep.setColumns(10);
 		
 		tfEstado = new JTextField();
-		tfEstado.setColumns(10);
-		tfEstado.setBounds(267, 159, 86, 20);
+		tfEstado.setBounds(305, 151, 86, 20);
 		contentPane.add(tfEstado);
+		tfEstado.setColumns(10);
 		
-		tfTelefone = new JTextField();
-		tfTelefone.setColumns(10);
-		tfTelefone.setBounds(267, 185, 86, 20);
-		contentPane.add(tfTelefone);
+		JButton btnNewButton = new JButton("Cadastrar Concessionaria");
+		btnNewButton.setBackground(Color.RED);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Concessionaria concessionaria = new Concessionaria(tfNome.getText(), tfCnpj.getText(), tfEmail.getText(), tfCep.getText(), tfCidade.getText(), tfEstado.getText());
+				concessionaria.persisteConcessionaria();
+				setVisible(false);
+			}
+		});
+		btnNewButton.setBounds(106, 217, 199, 23);
+		contentPane.add(btnNewButton);
+		
+		txtpnInformeOs = new JTextPane();
+		txtpnInformeOs.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtpnInformeOs.setText("* Informe os dados da concessionaria para efetuar o cadastro");
+		txtpnInformeOs.setBounds(10, 11, 385, 20);
+		contentPane.add(txtpnInformeOs);
+		
+		txtpnParaEfetuar = new JTextPane();
+		txtpnParaEfetuar.setText("* Para efetuar o cadastro clique em 'Cadastrar Concessionaria'");
+		txtpnParaEfetuar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtpnParaEfetuar.setBounds(10, 41, 385, 20);
+		contentPane.add(txtpnParaEfetuar);
+		
+		JLabel lblAno = new JLabel("Email:");
+		lblAno.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblAno.setBounds(10, 128, 72, 14);
+		contentPane.add(lblAno);
+		
+		tfEmail = new JTextField();
+		tfEmail.setBounds(87, 127, 86, 20);
+		contentPane.add(tfEmail);
+		tfEmail.setColumns(10);
 	}
 }

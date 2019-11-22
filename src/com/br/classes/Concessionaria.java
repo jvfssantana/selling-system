@@ -7,27 +7,26 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 import com.br.conexao.JdbcConnection;
-import com.br.telas.ExibirConcessionaria;
 
-public class Concessionaria extends ExibirConcessionaria {
+public class Concessionaria {
 	
-	private static final long serialVersionUID = 1L;
 	private String nome;
-	private String endereco;
+	private String cnpj;
+	private String email;
+	private String cep;
 	private String cidade;
 	private String estado;
-	private String cep;
-	private String telefone;
-	private String email;
 
-	public Concessionaria(String nome, String endereco, String cidade, String estado, String cep, String telefone, String email) {
+	public Concessionaria(String nome, String cnpj, String email, String cep, String cidade, String estado) {
+		
 		this.nome = nome;
-		this.endereco = endereco;
+		this.cnpj = cnpj;
+		this.email = email;
+		this.cep = cep;
 		this.cidade = cidade;
 		this.estado = estado;
-		this.cep = cep;
-		this.telefone = telefone;
-		this.email = email;
+		
+		
 	}
 	
 	public void persisteConcessionaria() {
@@ -35,16 +34,16 @@ public class Concessionaria extends ExibirConcessionaria {
 		try {
 			JdbcConnection jdbcConnection = new JdbcConnection();
 			Connection connection = jdbcConnection.getConnection();
-			String sql = "insert into concessionaria (nome, endereco, cidade, estado, cep, telefone, email) value ( ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into concessionaria (concessionaria_nome, concessionaria_cnpj, concessionaria_email, concessionaria_cep, concessionaria_cidade, concessionaria_estado) value ( ?, ?, ?, ?, ?, ?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			stmt.setString(1, nome);
-			stmt.setString(2, endereco);
-			stmt.setString(3, cidade);
-			stmt.setString(4, estado);
-			stmt.setString(5, cep);
-			stmt.setString(6, telefone);
-			stmt.setString(7, email);
+			stmt.setString(2, cnpj);
+			stmt.setString(3, email);
+			stmt.setString(4, cep);
+			stmt.setString(5, cidade);
+			stmt.setString(6, estado);
+			
 			
 			stmt.execute();
 			stmt.close();
@@ -56,30 +55,4 @@ public class Concessionaria extends ExibirConcessionaria {
 			e.printStackTrace();
 		}
 	}
-	
-//	public void mostrarConcessionaria() {
-//		try {
-//			JdbcConnection jdbcConnection = new JdbcConnection();
-//			Connection connection = jdbcConnection.getConnection();
-//			String sql = "select * from concessionaria where id_concessionaria like ?";
-//			PreparedStatement stmt = connection.prepareStatement(sql);
-//			stmt.setString(1, "%"+tfBuscar.getText());
-//			ResultSet rs = stmt.executeQuery();
-//			
-//			while(rs.next()) {
-//				tfNome.setText(rs.getString("nome"));
-//				tfEndereco.setText(rs.getString("endereco"));
-//				tfCidade.setText(rs.getString("cidade"));
-//				tfEstado.setText(rs.getString("estado"));
-//				tfCep.setText(rs.getString("cep"));
-//				tfTelefone.setText(rs.getString("telefone"));
-//				tfEmail.setText(rs.getString("email"));
-//			}
-//			rs.close();
-//			jdbcConnection.closeConnection();
-//		} catch (SQLException e1) {
-//			e1.printStackTrace();
-//		}
-//
-//	}
 }

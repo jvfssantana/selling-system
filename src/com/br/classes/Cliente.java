@@ -25,7 +25,7 @@ public class Cliente {
 			try {
 				JdbcConnection jdbcConnection = new JdbcConnection();
 				Connection connection = jdbcConnection.getConnection();
-				String sql = "insert into cliente(nome, cpf, email, carroID) values (?, ?, ?, ?)";
+				String sql = "insert into clientes (cliente_nome, cliente_cpf, cliente_email, cliente_carroID) values (?, ?, ?, ?)";
 				PreparedStatement stmt = connection.prepareStatement(sql);
 				
 				stmt.setString(1, nome);

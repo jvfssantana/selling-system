@@ -29,7 +29,7 @@ public class Carro {
 		try {
 			JdbcConnection jdbcConnection = new JdbcConnection();
 			Connection connection = jdbcConnection.getConnection();
-			String sql = "insert into carro (marca, modelo, cor, novo, usado) values (?, ?, ?, ?, ?)";
+			String sql = "insert into carro (carro_marca, carro_modelo, carro_cor, carro_novo, carro_usado) values (?, ?, ?, ?, ?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			stmt.setString(1, marca);
@@ -42,7 +42,7 @@ public class Carro {
 			stmt.close();
 			jdbcConnection.closeConnection();
 			
-			JOptionPane.showMessageDialog(null, "Compra cadastrada com sucesso!");
+			JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
