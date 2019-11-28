@@ -55,15 +55,67 @@ public class Sistema extends JFrame {
 		
 		JTextPane txtpnSejaBemVindo = new JTextPane();
 		txtpnSejaBemVindo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtpnSejaBemVindo.setText("* Para continuar com o sistema cadastre o cliente");
-		txtpnSejaBemVindo.setBounds(20, 72, 372, 26);
+		txtpnSejaBemVindo.setText("* Concessionaria para cadastrar uma concessionaria");
+		txtpnSejaBemVindo.setBounds(20, 60, 372, 26);
 		getContentPane().add(txtpnSejaBemVindo);
 		
-		JButton btnNewButton = new JButton("Cadastrar Cliente");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnNewButton.setBackground(Color.RED);
-		btnNewButton.addActionListener(new ActionListener() {
+		JTextPane txtpnParaCadastrar = new JTextPane();
+		txtpnParaCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtpnParaCadastrar.setText("* Funcionario para cadastrar um funcionario");
+		txtpnParaCadastrar.setBounds(20, 97, 372, 26);
+		getContentPane().add(txtpnParaCadastrar);
+		
+		JTextPane txtpnClientePara = new JTextPane();
+		txtpnClientePara.setText("* Cliente para cadastrar um cliente");
+		txtpnClientePara.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtpnClientePara.setBounds(20, 134, 372, 26);
+		getContentPane().add(txtpnClientePara);
+		
+		JTextPane txtpnCarroPara = new JTextPane();
+		txtpnCarroPara.setText("* Carro para cadastrar uma compra para um cliente");
+		txtpnCarroPara.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtpnCarroPara.setBounds(20, 172, 372, 26);
+		getContentPane().add(txtpnCarroPara);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnConcessionaria = new JMenu("Concessionaria");
+		menuBar.add(mnConcessionaria);
+		
+		JMenuItem mntmCadastrarConcessionaria = new JMenuItem("Cadastrar Concessionaria");
+		mntmCadastrarConcessionaria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				CadastrarConcessionaria cadastrarConcessionaria = new CadastrarConcessionaria();
+				cadastrarConcessionaria.setVisible(true);
+				setVisible(false);
+	
+			}
+		});
+		mnConcessionaria.add(mntmCadastrarConcessionaria);
+		
+		JMenu mnFuncionario = new JMenu("Funcionario");
+		menuBar.add(mnFuncionario);
+		
+		JMenuItem mntmCadastrarFuncionario = new JMenuItem("Cadastrar Funcionario");
+		mntmCadastrarFuncionario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				CadastrarFuncionario cadastrarFuncionario = new CadastrarFuncionario();
+				cadastrarFuncionario.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
+		mnFuncionario.add(mntmCadastrarFuncionario);
+		
+		JMenu mnCliente = new JMenu("Cliente ");
+		menuBar.add(mnCliente);
+		
+		JMenuItem mntmCadastrarCliente = new JMenuItem("Cadastrar Cliente");
+		mntmCadastrarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				
 				CadastrarCliente cadastrarCliente = new CadastrarCliente();
 				cadastrarCliente.setVisible(true);
@@ -71,13 +123,21 @@ public class Sistema extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(128, 169, 161, 23);
-		getContentPane().add(btnNewButton);
+		mnCliente.add(mntmCadastrarCliente);
 		
-		JTextPane txtpnParaCadastrar = new JTextPane();
-		txtpnParaCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtpnParaCadastrar.setText("* Para cadastrar o cliente clique no bot\u00E3o 'cadastra cliente'");
-		txtpnParaCadastrar.setBounds(20, 109, 372, 26);
-		getContentPane().add(txtpnParaCadastrar);
+		JMenu mnCarro = new JMenu("Carro");
+		menuBar.add(mnCarro);
+		
+		JMenuItem mntmCadastrarCarro = new JMenuItem("Cadastrar Carro");
+		mntmCadastrarCarro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				CadastrarCarro cadastrarCarro = new CadastrarCarro();
+				cadastrarCarro.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
+		mnCarro.add(mntmCadastrarCarro);
 	}
 }
