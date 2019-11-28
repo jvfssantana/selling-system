@@ -11,13 +11,11 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private String email;
-	private String carroID;
 	
-	public Cliente(String nome, String cpf, String email, String carroID) {
+	public Cliente(String nome, String cpf, String email) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
-		this.carroID = carroID;
 	}
 	
 	public void persisteCliente() {
@@ -25,14 +23,13 @@ public class Cliente {
 			try {
 				JdbcConnection jdbcConnection = new JdbcConnection();
 				Connection connection = jdbcConnection.getConnection();
-				String sql = "insert into clientes (cliente_nome, cliente_cpf, cliente_email, cliente_carroID) values (?, ?, ?, ?)";
+				String sql = "insert into cliente (nome, cpf, email) values (?, ?, ?)";
 				PreparedStatement stmt = connection.prepareStatement(sql);
 				
 				stmt.setString(1, nome);
 				stmt.setString(2, cpf);
 				stmt.setString(3, email);
-				stmt.setString(4, carroID);
-		
+				
 				stmt.execute();
 				stmt.close();
 				jdbcConnection.closeConnection();

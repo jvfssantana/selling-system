@@ -24,12 +24,10 @@ public class CadastrarCliente extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField tfNome;
-	private JTextField tfCarroID;
 	private JTextField tfEmail;
 	private JTextField tfCpf;
 	private JTextPane txtpnInformeOs;
 	private JTextPane txtpnCliqueEm;
-	private JTextPane txtpnLogoAps;
 
 	/**
 	 * Launch the application.
@@ -63,42 +61,32 @@ public class CadastrarCliente extends JFrame {
 		
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNome.setBounds(10, 137, 46, 14);
+		lblNome.setBounds(10, 141, 46, 14);
 		contentPane.add(lblNome);
 		
 		JLabel lblCpf = new JLabel("Cpf:");
 		lblCpf.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblCpf.setBounds(10, 162, 46, 14);
+		lblCpf.setBounds(146, 141, 32, 14);
 		contentPane.add(lblCpf);
-		
-		JLabel lblTelefone = new JLabel("IDcompra:");
-		lblTelefone.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblTelefone.setBounds(206, 162, 70, 14);
-		contentPane.add(lblTelefone);
 		
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblEmail.setBounds(206, 137, 46, 14);
+		lblEmail.setBounds(271, 141, 37, 14);
 		contentPane.add(lblEmail);
 		
 		tfNome = new JTextField();
-		tfNome.setBounds(66, 131, 86, 20);
+		tfNome.setBounds(50, 135, 86, 20);
 		contentPane.add(tfNome);
 		tfNome.setColumns(10);
 		
 		tfCpf = new JTextField();
 		tfCpf.setColumns(10);
-		tfCpf.setBounds(272, 135, 86, 20);
+		tfCpf.setBounds(307, 135, 86, 20);
 		contentPane.add(tfCpf);
-		
-		tfCarroID = new JTextField();
-		tfCarroID.setColumns(10);
-		tfCarroID.setBounds(272, 160, 86, 20);
-		contentPane.add(tfCarroID);
 		
 		tfEmail = new JTextField();
 		tfEmail.setColumns(10);
-		tfEmail.setBounds(66, 160, 86, 20);
+		tfEmail.setBounds(175, 135, 86, 20);
 		contentPane.add(tfEmail);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
@@ -107,10 +95,10 @@ public class CadastrarCliente extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				
-				Cliente cliente = new Cliente(tfNome.getText(), tfCpf.getText(), tfEmail.getText(), tfCarroID.getText());
+				Cliente cliente = new Cliente(tfNome.getText(), tfCpf.getText(), tfEmail.getText());
 				cliente.persisteCliente();
-				CadastrarCarro cadastrarCarro = new CadastrarCarro();
-				cadastrarCarro.setVisible(true);
+				Sistema sistema = new Sistema();
+				sistema.setVisible(true);
 				setVisible(false);
 				
 			}
@@ -129,12 +117,6 @@ public class CadastrarCliente extends JFrame {
 		txtpnCliqueEm.setText("* Clique em 'Cadastrar Cliente' para efetuar o cadastro");
 		txtpnCliqueEm.setBounds(10, 57, 364, 20);
 		contentPane.add(txtpnCliqueEm);
-		
-		txtpnLogoAps = new JTextPane();
-		txtpnLogoAps.setText("* Logo ap\u00F3s o cadastro voc\u00EA ira para a compra do carro");
-		txtpnLogoAps.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtpnLogoAps.setBounds(10, 88, 364, 20);
-		contentPane.add(txtpnLogoAps);
 	}
 
 }

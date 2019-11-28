@@ -113,9 +113,13 @@ public class CadastrarConcessionaria extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				Concessionaria concessionaria = new Concessionaria(tfNome.getText(), tfCnpj.getText(), tfEmail.getText(), tfCep.getText(), tfCidade.getText(), tfEstado.getText());
 				concessionaria.persisteConcessionaria();
+				Sistema sistema = new Sistema();
+				sistema.setVisible(true);
 				setVisible(false);
+
 			}
 		});
 		btnNewButton.setBounds(106, 217, 199, 23);

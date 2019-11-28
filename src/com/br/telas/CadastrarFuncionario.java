@@ -96,8 +96,11 @@ public class CadastrarFuncionario extends JFrame {
 		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
+				
 				Funcionario funcionario = new Funcionario(tfNome.getText(), tfCpf.getText(), tfEmail.getText());
 				funcionario.persisteFuncionario();
+				Sistema sistema = new Sistema();
+				sistema.setVisible(true);
 				setVisible(false);
 				
 			}
