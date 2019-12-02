@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import com.br.classes.Carro;
+import com.br.classes.Estoque;
+
 import java.awt.Color;
 import javax.swing.JTextPane;
 import java.awt.Font;
@@ -27,7 +29,9 @@ public class CadastrarCarro extends JFrame {
 	private JTextPane txtpnInformeOs;
 	private JTextPane txtpnParaEfetuar;
 	private JTextField tfAno;
-	private JTextField tfClienteID;
+	private JTextField tfProprietario;
+	private JLabel lblEstoqueid;
+	private JTextField tfEstoqueid;
 
 	/**
 	 * Launch the application.
@@ -113,8 +117,10 @@ public class CadastrarCarro extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Carro carro = new Carro(tfMarca.getText(), tfModelo.getText(), tfCor.getText(), tfNovo.getText(), tfUsado.getText(), tfClienteID.getText());
+				Carro carro = new Carro(tfMarca.getText(), tfModelo.getText(), tfCor.getText(), tfNovo.getText(), tfUsado.getText(), Integer.parseInt(tfProprietario.getText()));
 				carro.persisteCarro();
+				Estoque estoque = new Estoque(Integer.parseInt(tfEstoqueid.getText()));
+				estoque.decrementaEstoque();
 				Sistema sistema = new Sistema();
 				sistema.setVisible(true);
 				setVisible(false);
@@ -146,14 +152,25 @@ public class CadastrarCarro extends JFrame {
 		contentPane.add(tfAno);
 		tfAno.setColumns(10);
 		
-		JLabel lblClienteid = new JLabel("clienteID:");
+		JLabel lblClienteid = new JLabel("ProprietarioID:");
 		lblClienteid.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblClienteid.setBounds(213, 154, 86, 14);
 		contentPane.add(lblClienteid);
 		
-		tfClienteID = new JTextField();
-		tfClienteID.setColumns(10);
-		tfClienteID.setBounds(305, 152, 86, 20);
-		contentPane.add(tfClienteID);
+		tfProprietario = new JTextField();
+		tfProprietario.setColumns(10);
+		tfProprietario.setBounds(305, 152, 86, 20);
+		contentPane.add(tfProprietario);
+		
+		lblEstoqueid = new JLabel("estoqueID:");
+		lblEstoqueid.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblEstoqueid.setBounds(213, 178, 86, 14);
+		contentPane.add(lblEstoqueid);
+		
+		tfEstoqueid = new JTextField();
+		tfEstoqueid.setColumns(10);
+		tfEstoqueid.setBounds(305, 175, 86, 20);
+		contentPane.add(tfEstoqueid);
+		
 	}
 }

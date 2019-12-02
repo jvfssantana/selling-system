@@ -8,14 +8,14 @@ import com.br.conexao.JdbcConnection;
 
 public class Cliente {
 	
-	private String nome;
-	private String cpf;
-	private String email;
+	private String descnome;
+	private String desccpf;
+	private String descemail;
 	
-	public Cliente(String nome, String cpf, String email) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.email = email;
+	public Cliente(String descnome, String desccpf, String descemail) {
+		this.descnome = descnome;
+		this.desccpf = desccpf;
+		this.descemail = descemail;
 	}
 	
 	public void persisteCliente() {
@@ -23,12 +23,12 @@ public class Cliente {
 			try {
 				JdbcConnection jdbcConnection = new JdbcConnection();
 				Connection connection = jdbcConnection.getConnection();
-				String sql = "insert into cliente (nome, cpf, email) values (?, ?, ?)";
+				String sql = "insert into tb_cliente (descnome, desccpf, descemail) values (?, ?, ?)";
 				PreparedStatement stmt = connection.prepareStatement(sql);
 				
-				stmt.setString(1, nome);
-				stmt.setString(2, cpf);
-				stmt.setString(3, email);
+				stmt.setString(1, descnome);
+				stmt.setString(2, desccpf);
+				stmt.setString(3, descemail);
 				
 				stmt.execute();
 				stmt.close();
