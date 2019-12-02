@@ -48,6 +48,8 @@ public class Carro {
 			jdbcConnection.closeConnection();
 			
 			JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
