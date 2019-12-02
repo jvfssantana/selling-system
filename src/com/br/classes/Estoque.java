@@ -13,7 +13,6 @@ public class Estoque {
 	private int idestoque;
 	
 	public Estoque(int idestoque) {
-		
 		this.idestoque = idestoque;
 	}
 
@@ -22,8 +21,8 @@ public class Estoque {
 		try {
 			JdbcConnection jdbcConnection = new JdbcConnection();
 			Connection connection = jdbcConnection.getConnection();
-			String sql = "delete from tb_estoque where idestoque = ?";
-			PreparedStatement stmt = connection.prepareStatement(sql);
+			String delete = "delete from tb_estoque where idestoque = ?";
+			PreparedStatement stmt = connection.prepareStatement(delete);
 			
 			stmt.setInt(1, idestoque);
 			
@@ -32,7 +31,6 @@ public class Estoque {
 			jdbcConnection.closeConnection();
 			
 			JOptionPane.showMessageDialog(null, "Decrementado com sucesso!");
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
