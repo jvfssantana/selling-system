@@ -26,21 +26,9 @@ public class TelaCliente extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JMenuBar menuBar;
-	private JMenu menu;
-	private JMenuItem menuItem;
-	private JMenu menu_1;
-	private JMenuItem menuItem_1;
-	private JMenu menu_2;
-	private JMenuItem menuItem_2;
-	private JLabel label;
-	private JLabel lblCpf;
-	private JTextField tfNome;
-	private JTextField tfCpf;
-	private JLabel label_2;
-	private JTextField tfEmail;
-	private JLabel label_3;
-	private JTextField textField_3;
+	private JTextPane txtpnSessoDoCliente;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
 
 	/**
 	 * Launch the application.
@@ -72,82 +60,40 @@ public class TelaCliente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 388, 21);
-		contentPane.add(menuBar);
+		txtpnSessoDoCliente = new JTextPane();
+		txtpnSessoDoCliente.setText("                       Sess\u00E3o do Cliente");
+		txtpnSessoDoCliente.setFont(new Font("Tahoma", Font.BOLD, 16));
+		txtpnSessoDoCliente.setBackground(new Color(152, 251, 152));
+		txtpnSessoDoCliente.setBounds(10, 11, 368, 40);
+		contentPane.add(txtpnSessoDoCliente);
 		
-		menu = new JMenu("Cadastrar");
-		menuBar.add(menu);
-		
-		menuItem = new JMenuItem("Cadastrar");
-		menuItem.addActionListener(new ActionListener() {
+		btnNewButton = new JButton("Cadastrar");
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Cliente cliente = new Cliente(tfNome.getText(), tfCpf.getText(), tfEmail.getText());
-				cliente.persisteCliente();
-				Sessao sessao = new Sessao();
-				sessao.setVisible(true);
+				CadastraCliente cadastraCliente = new CadastraCliente();
+				cadastraCliente.setVisible(true);
 				setVisible(false);
 				
 			}
 		});
-		menu.add(menuItem);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setBounds(10, 141, 128, 23);
+		contentPane.add(btnNewButton);
 		
-		menu_1 = new JMenu("Atualizar");
-		menuBar.add(menu_1);
-		
-		menuItem_1 = new JMenuItem("Atualizar");
-		menu_1.add(menuItem_1);
-		
-		menu_2 = new JMenu("Excluir");
-		menuBar.add(menu_2);
-		
-		menuItem_2 = new JMenuItem("Excluir");
-		menu_2.add(menuItem_2);
-		
-		label = new JLabel("Nome:");
-		label.setForeground(new Color(0, 255, 127));
-		label.setFont(new Font("Tahoma", Font.BOLD, 16));
-		label.setBounds(10, 76, 72, 14);
-		contentPane.add(label);
-		
-		lblCpf = new JLabel("Cpf:");
-		lblCpf.setForeground(new Color(0, 255, 127));
-		lblCpf.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblCpf.setBounds(10, 101, 67, 18);
-		contentPane.add(lblCpf);
-		
-		tfNome = new JTextField();
-		tfNome.setColumns(10);
-		tfNome.setBounds(87, 75, 86, 20);
-		contentPane.add(tfNome);
-		
-		tfCpf = new JTextField();
-		tfCpf.setColumns(10);
-		tfCpf.setBounds(87, 102, 86, 20);
-		contentPane.add(tfCpf);
-		
-		label_2 = new JLabel("Email:");
-		label_2.setForeground(new Color(0, 255, 127));
-		label_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		label_2.setBounds(10, 130, 72, 14);
-		contentPane.add(label_2);
-		
-		tfEmail = new JTextField();
-		tfEmail.setColumns(10);
-		tfEmail.setBounds(87, 128, 86, 20);
-		contentPane.add(tfEmail);
-		
-		label_3 = new JLabel("ID:");
-		label_3.setForeground(new Color(0, 255, 127));
-		label_3.setFont(new Font("Tahoma", Font.BOLD, 16));
-		label_3.setBounds(10, 155, 35, 14);
-		contentPane.add(label_3);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(87, 153, 86, 20);
-		contentPane.add(textField_3);
+		btnNewButton_1 = new JButton("Atualizar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				AtualizarCliente atualizarCliente = new AtualizarCliente();
+				atualizarCliente.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton_1.setBounds(260, 141, 118, 23);
+		contentPane.add(btnNewButton_1);
 	}
 
 }
