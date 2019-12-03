@@ -12,9 +12,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import com.br.classes.Cliente;
-import com.br.classes.Concessionaria;
-import com.br.classes.Funcionario;
-
 import java.awt.Color;
 import javax.swing.JTextPane;
 import java.awt.Font;
@@ -22,7 +19,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-public class CadastrarFuncionario extends JFrame {
+public class CadastraCliente extends JFrame {
 
 	/**
 	 * 
@@ -35,12 +32,6 @@ public class CadastrarFuncionario extends JFrame {
 	private JTextField tfCpf;
 	private JLabel label_2;
 	private JTextField tfEmail;
-	private JLabel lblSobrenome;
-	private JTextField tfSobrenome;
-	private JLabel lblFuno;
-	private JTextField tfFuncao;
-	private JTextPane txtpnCadastrarFuncionario;
-	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -49,7 +40,7 @@ public class CadastrarFuncionario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastrarFuncionario frame = new CadastrarFuncionario();
+					CadastraCliente frame = new CadastraCliente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,11 +52,11 @@ public class CadastrarFuncionario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastrarFuncionario() {
+	public CadastraCliente() {
 		setResizable(false);
 		setTitle("Concessionaria Smart");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 464, 205);
+		setBounds(100, 100, 392, 309);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.PINK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -75,71 +66,49 @@ public class CadastrarFuncionario extends JFrame {
 		label = new JLabel("Nome:");
 		label.setForeground(new Color(0, 255, 127));
 		label.setFont(new Font("Tahoma", Font.BOLD, 16));
-		label.setBounds(10, 62, 72, 14);
+		label.setBounds(89, 76, 72, 14);
 		contentPane.add(label);
 		
 		lblCpf = new JLabel("Cpf:");
 		lblCpf.setForeground(new Color(0, 255, 127));
 		lblCpf.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblCpf.setBounds(191, 89, 58, 18);
+		lblCpf.setBounds(89, 101, 67, 18);
 		contentPane.add(lblCpf);
 		
 		tfNome = new JTextField();
 		tfNome.setColumns(10);
-		tfNome.setBounds(78, 61, 86, 20);
+		tfNome.setBounds(160, 75, 128, 20);
 		contentPane.add(tfNome);
 		
 		tfCpf = new JTextField();
 		tfCpf.setColumns(10);
-		tfCpf.setBounds(295, 86, 138, 20);
+		tfCpf.setBounds(160, 102, 128, 20);
 		contentPane.add(tfCpf);
 		
 		label_2 = new JLabel("Email:");
 		label_2.setForeground(new Color(0, 255, 127));
 		label_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		label_2.setBounds(10, 112, 72, 14);
+		label_2.setBounds(89, 134, 72, 14);
 		contentPane.add(label_2);
 		
 		tfEmail = new JTextField();
 		tfEmail.setColumns(10);
-		tfEmail.setBounds(78, 114, 86, 20);
+		tfEmail.setBounds(160, 133, 128, 20);
 		contentPane.add(tfEmail);
 		
-		lblSobrenome = new JLabel("Sobrenome:");
-		lblSobrenome.setForeground(new Color(0, 255, 127));
-		lblSobrenome.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblSobrenome.setBounds(191, 60, 103, 18);
-		contentPane.add(lblSobrenome);
+		JTextPane txtpnCadastrarCliente = new JTextPane();
+		txtpnCadastrarCliente.setText("                       Cadastrar cliente");
+		txtpnCadastrarCliente.setFont(new Font("Tahoma", Font.BOLD, 16));
+		txtpnCadastrarCliente.setBackground(new Color(152, 251, 152));
+		txtpnCadastrarCliente.setBounds(10, 11, 368, 40);
+		contentPane.add(txtpnCadastrarCliente);
 		
-		tfSobrenome = new JTextField();
-		tfSobrenome.setColumns(10);
-		tfSobrenome.setBounds(295, 61, 138, 20);
-		contentPane.add(tfSobrenome);
-		
-		lblFuno = new JLabel("Fun\u00E7\u00E3o:");
-		lblFuno.setForeground(new Color(0, 255, 127));
-		lblFuno.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblFuno.setBounds(10, 87, 72, 14);
-		contentPane.add(lblFuno);
-		
-		tfFuncao = new JTextField();
-		tfFuncao.setColumns(10);
-		tfFuncao.setBounds(78, 87, 86, 20);
-		contentPane.add(tfFuncao);
-		
-		txtpnCadastrarFuncionario = new JTextPane();
-		txtpnCadastrarFuncionario.setText("                         Cadastrar funcionario");
-		txtpnCadastrarFuncionario.setFont(new Font("Tahoma", Font.BOLD, 16));
-		txtpnCadastrarFuncionario.setBackground(new Color(152, 251, 152));
-		txtpnCadastrarFuncionario.setBounds(10, 11, 434, 40);
-		contentPane.add(txtpnCadastrarFuncionario);
-		
-		btnNewButton = new JButton("Cadastrar");
+		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				
-				Funcionario funcionario = new Funcionario(tfNome.getText(), tfSobrenome.getText(), tfFuncao.getText(), tfCpf.getText(), tfEmail.getText());
-				funcionario.persisteFuncionario();
+				Cliente cliente = new Cliente(tfNome.getText(), tfCpf.getText(), tfEmail.getText());
+				cliente.persisteCliente();
 				Sessao sessao = new Sessao();
 				sessao.setVisible(true);
 				setVisible(false);
@@ -148,8 +117,7 @@ public class CadastrarFuncionario extends JFrame {
 		});
 		btnNewButton.setBackground(new Color(0, 255, 127));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setBounds(295, 128, 138, 23);
+		btnNewButton.setBounds(160, 159, 128, 23);
 		contentPane.add(btnNewButton);
 	}
 }
-

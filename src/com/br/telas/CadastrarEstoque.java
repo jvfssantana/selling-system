@@ -22,7 +22,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-public class CadastrarCarro extends JFrame {
+public class CadastrarEstoque extends JFrame {
 
 	/**
 	 * 
@@ -33,16 +33,13 @@ public class CadastrarCarro extends JFrame {
 	private JLabel lblCpf;
 	private JTextField tfMarca;
 	private JTextField tfModelo;
-	private JLabel lblCor;
 	private JTextField tfCor;
 	private JLabel label;
 	private JLabel lblCarroNovo;
 	private JLabel lblCarroUsado;
 	private JTextField tfCarroNovo;
 	private JTextField tfCarroUsado;
-	private JTextField tfProprietario;
 	private JButton btnNewButton;
-	private JTextField tfId;
 
 	/**
 	 * Launch the application.
@@ -51,7 +48,7 @@ public class CadastrarCarro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastrarCarro frame = new CadastrarCarro();
+					CadastrarEstoque frame = new CadastrarEstoque();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,7 +60,7 @@ public class CadastrarCarro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastrarCarro() {
+	public CadastrarEstoque() {
 		setResizable(false);
 		setTitle("Concessionaria Smart");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,12 +92,6 @@ public class CadastrarCarro extends JFrame {
 		tfModelo.setColumns(10);
 		tfModelo.setBounds(87, 101, 86, 20);
 		contentPane.add(tfModelo);
-		
-		lblCor = new JLabel("Proprietario:");
-		lblCor.setForeground(new Color(0, 255, 127));
-		lblCor.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblCor.setBounds(217, 126, 111, 14);
-		contentPane.add(lblCor);
 		
 		tfCor = new JTextField();
 		tfCor.setColumns(10);
@@ -135,26 +126,19 @@ public class CadastrarCarro extends JFrame {
 		tfCarroUsado.setBounds(338, 101, 86, 20);
 		contentPane.add(tfCarroUsado);
 		
-		tfProprietario = new JTextField();
-		tfProprietario.setColumns(10);
-		tfProprietario.setBounds(338, 125, 86, 20);
-		contentPane.add(tfProprietario);
-		
 		JTextPane txtpnVenderCarro = new JTextPane();
-		txtpnVenderCarro.setText("                                 Vender carro");
+		txtpnVenderCarro.setText("                      Cadastrar carro no estoque");
 		txtpnVenderCarro.setFont(new Font("Tahoma", Font.BOLD, 16));
 		txtpnVenderCarro.setBackground(new Color(152, 251, 152));
 		txtpnVenderCarro.setBounds(8, 11, 434, 40);
 		contentPane.add(txtpnVenderCarro);
 		
-		btnNewButton = new JButton("Vender");
+		btnNewButton = new JButton("Cadastrar carro");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Carro carro = new Carro(tfMarca.getText(), tfModelo.getText(), tfCor.getText(), tfCarroNovo.getText(), tfCarroUsado.getText(), Integer.parseInt(tfProprietario.getText()));
-				carro.persisteCarro();
-				Estoque estoque = new Estoque(Integer.parseInt(tfId.getText()));
-				estoque.decrementaEstoque();
+				Estoque estoque = new Estoque(tfMarca.getText(), tfModelo.getText(), tfCor.getText(), tfCarroNovo.getText(), tfCarroUsado.getText());
+				estoque.persisteEstoque();
 				Sessao sessao = new Sessao();
 				sessao.setVisible(true);
 				setVisible(false);
@@ -163,18 +147,7 @@ public class CadastrarCarro extends JFrame {
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton.setBackground(new Color(0, 255, 127));
-		btnNewButton.setBounds(290, 198, 123, 23);
+		btnNewButton.setBounds(217, 129, 207, 23);
 		contentPane.add(btnNewButton);
-		
-		JLabel lblCdigoDoEstoque = new JLabel("C\u00F3digo do estoque:");
-		lblCdigoDoEstoque.setForeground(new Color(0, 255, 127));
-		lblCdigoDoEstoque.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblCdigoDoEstoque.setBounds(20, 202, 170, 19);
-		contentPane.add(lblCdigoDoEstoque);
-		
-		tfId = new JTextField();
-		tfId.setColumns(10);
-		tfId.setBounds(183, 201, 99, 20);
-		contentPane.add(tfId);
 	}
 }

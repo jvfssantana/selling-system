@@ -10,14 +10,20 @@ import com.br.conexao.JdbcConnection;
 
 public class Funcionario {
 	
-	private String nome;
-	private String cpf;
-	private String email;
+	private String descnome;
+	private String descsobrenome;
+	private String descfuncao;
+	private String desccpf;
+	private String descemail;
 	
-	public Funcionario (String nome, String cpf, String email) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.email = email;
+	public Funcionario (String descnome, String descsobrenome, String descfuncao, String desccpf, String descemail) {
+		
+		this.descnome = descnome;
+		this.descsobrenome = descsobrenome;
+		this.descfuncao = descfuncao;
+		this.desccpf = desccpf;
+		this.descemail = descemail;
+	
 	}
 	
 	public void persisteFuncionario() {
@@ -25,12 +31,14 @@ public class Funcionario {
 		try {
 			JdbcConnection jdbcConnection = new JdbcConnection();
 			Connection connection = jdbcConnection.getConnection();
-			String sql = "insert into funcionarios (funcionario_nome, funcionario_cpf, funcionario_email) values (?, ?, ?)";
+			String sql = "insert into tb_funcionario (descnome, descsobrenome, descfuncao, desccpf, descemail) values (?, ?, ?, ?, ?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
-			stmt.setString(1, nome);
-			stmt.setString(2, cpf);
-			stmt.setString(3, email);
+			stmt.setString(1, descnome);
+			stmt.setString(2, descsobrenome);
+			stmt.setString(3, descfuncao);
+			stmt.setString(4, desccpf);
+			stmt.setString(5, descemail);
 	
 			stmt.execute();
 			stmt.close();
@@ -40,5 +48,9 @@ public class Funcionario {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void acessaSistema() {
+		
 	}
 }

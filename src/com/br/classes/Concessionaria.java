@@ -10,22 +10,16 @@ import com.br.conexao.JdbcConnection;
 
 public class Concessionaria {
 	
-	private String nome;
-	private String cnpj;
-	private String email;
-	private String cep;
-	private String cidade;
-	private String estado;
+	private String descnome;
+	private String desccnpj;
+	private String descemail;
+	private int funcionario;
 
-	public Concessionaria(String nome, String cnpj, String email, String cep, String cidade, String estado) {
+	public Concessionaria(String descnome, String desccnpj, String descemail) {
 		
-		this.nome = nome;
-		this.cnpj = cnpj;
-		this.email = email;
-		this.cep = cep;
-		this.cidade = cidade;
-		this.estado = estado;
-		
+		this.descnome = descnome;
+		this.desccnpj = desccnpj;
+		this.descemail = descemail;
 		
 	}
 	
@@ -34,16 +28,12 @@ public class Concessionaria {
 		try {
 			JdbcConnection jdbcConnection = new JdbcConnection();
 			Connection connection = jdbcConnection.getConnection();
-			String sql = "insert into concessionaria (concessionaria_nome, concessionaria_cnpj, concessionaria_email, concessionaria_cep, concessionaria_cidade, concessionaria_estado) value ( ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into tb_concessionaria (descnome , desccnpj, descemail) value (?, ?, ?, ?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
-			stmt.setString(1, nome);
-			stmt.setString(2, cnpj);
-			stmt.setString(3, email);
-			stmt.setString(4, cep);
-			stmt.setString(5, cidade);
-			stmt.setString(6, estado);
-			
+			stmt.setString(1, descnome);
+			stmt.setString(2, desccnpj);
+			stmt.setString(3, descemail);
 			
 			stmt.execute();
 			stmt.close();
