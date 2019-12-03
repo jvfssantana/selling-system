@@ -12,7 +12,8 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Acesso {
-	
+
+	private String descnome;
 	private String descemail;
 	private String descsenha;
 	
@@ -20,6 +21,15 @@ public class Acesso {
 		
 		this.descemail = descemail;
 		this.descsenha = descsenha;
+		
+	}
+	
+	public Acesso (String descnome, String descemail, String descsenha) {
+		
+		this.descnome = descnome;
+		this.descemail = descemail;
+		this.descsenha = descsenha;
+		
 	}
 	
 	
@@ -51,5 +61,28 @@ public class Acesso {
 		}
 		
 	}
+	
+	
+	public void persisteAcesso() {
+		
+		try {
+			JdbcConnection jdbcConnection = new JdbcConnection();
+			Connection connection = jdbcConnection.getConnection();
+			String sql = "insert into tb_acesso_sistema(descnome, descemail, descsenha) values (?, ?, ?)";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setString(1, descnome);
+			stmt.setString(2, descemail);
+			stmt.setString(3, descsenha);
+			
+			stmt.execute();
+			stmt.close();
+			jdbcConnection.closeConnection();
+			
+			JOptionPane.showMessageDialog(null, "Acesso cadastrado com sucesso!");
+		}catch (SQLException e) {
+			e.printStackTrace();
+	}
+}
 	
 }

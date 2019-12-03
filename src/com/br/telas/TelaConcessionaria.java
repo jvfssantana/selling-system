@@ -24,10 +24,6 @@ import javax.swing.JMenuItem;
 public class TelaConcessionaria extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField tfNome;
-	private JTextField tfCnpj;
-	private JTextField tfEmail;
-	private JTextField tfFuncionario;
 
 	/**
 	 * Launch the application.
@@ -50,88 +46,46 @@ public class TelaConcessionaria extends JFrame {
 	 */
 	public TelaConcessionaria() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 404, 212);
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenu mnCadastrar = new JMenu("Cadastrar");
-		menuBar.add(mnCadastrar);
-		
-		JMenuItem mntmCadastrar = new JMenuItem("Cadastrar");
-		mntmCadastrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				Concessionaria Concessionaria = new Concessionaria(tfNome.getText(), tfCnpj.getText(), tfEmail.getText());
-				Concessionaria.persisteConcessionaria();
-				Sessao sessao = new Sessao();
-				sessao.setVisible(true);
-				setVisible(false);
-				
-				
-			}
-		});
-		mnCadastrar.add(mntmCadastrar);
-		
-		JMenu mnAtualizar = new JMenu("Atualizar");
-		menuBar.add(mnAtualizar);
-		
-		JMenuItem mntmAtualizar = new JMenuItem("Atualizar");
-		mnAtualizar.add(mntmAtualizar);
-		
-		JMenu mnExcluir = new JMenu("Excluir");
-		menuBar.add(mnExcluir);
-		
-		JMenuItem mntmExcluir = new JMenuItem("Excluir");
-		mnExcluir.add(mntmExcluir);
+		setBounds(100, 100, 414, 272);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.PINK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Nome:");
-		lblNewLabel.setForeground(new Color(0, 255, 127));
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(10, 25, 72, 14);
-		contentPane.add(lblNewLabel);
+		JTextPane txtpnSessoDaConcessionaria = new JTextPane();
+		txtpnSessoDaConcessionaria.setText("                  Sess\u00E3o da Concessionaria");
+		txtpnSessoDaConcessionaria.setFont(new Font("Tahoma", Font.BOLD, 16));
+		txtpnSessoDaConcessionaria.setBackground(new Color(152, 251, 152));
+		txtpnSessoDaConcessionaria.setBounds(10, 11, 368, 40);
+		contentPane.add(txtpnSessoDaConcessionaria);
 		
-		JLabel lblNewLabel_1 = new JLabel("Cnpj:");
-		lblNewLabel_1.setForeground(new Color(0, 255, 127));
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1.setBounds(10, 50, 86, 18);
-		contentPane.add(lblNewLabel_1);
+		JButton btnCadastarConcessionaria = new JButton("Cadastar Concessionaria");
+		btnCadastarConcessionaria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				CadastrarConcessionaria cadastrarConcessionaria = new CadastrarConcessionaria();
+				cadastrarConcessionaria.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
+		btnCadastarConcessionaria.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnCadastarConcessionaria.setBounds(10, 112, 257, 23);
+		contentPane.add(btnCadastarConcessionaria);
 		
-		tfNome = new JTextField();
-		tfNome.setBounds(87, 24, 86, 20);
-		contentPane.add(tfNome);
-		tfNome.setColumns(10);
-		
-		tfCnpj = new JTextField();
-		tfCnpj.setBounds(87, 51, 86, 20);
-		contentPane.add(tfCnpj);
-		tfCnpj.setColumns(10);
-		
-		JLabel lblAno = new JLabel("Email:");
-		lblAno.setForeground(new Color(0, 255, 127));
-		lblAno.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblAno.setBounds(10, 79, 72, 14);
-		contentPane.add(lblAno);
-		
-		tfEmail = new JTextField();
-		tfEmail.setBounds(87, 78, 86, 20);
-		contentPane.add(tfEmail);
-		tfEmail.setColumns(10);
-		
-		JLabel lblId = new JLabel("ID:");
-		lblId.setForeground(new Color(0, 255, 127));
-		lblId.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblId.setBounds(10, 104, 35, 14);
-		contentPane.add(lblId);
-		
-		tfFuncionario = new JTextField();
-		tfFuncionario.setColumns(10);
-		tfFuncionario.setBounds(87, 103, 86, 20);
-		contentPane.add(tfFuncionario);
+		JButton btnNewButton = new JButton("Sair");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Sessao sessao = new Sessao();
+				sessao.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setBounds(277, 112, 101, 23);
+		contentPane.add(btnNewButton);
 	}
 }

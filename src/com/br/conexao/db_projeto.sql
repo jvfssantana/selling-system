@@ -29,6 +29,7 @@ create table tb_estoque (
     descusado enum('sim', 'nao') not null
 );
 
+
 create table tb_funcionario (
 	idfuncionario int auto_increment not null primary key,
     descnome varchar(255),

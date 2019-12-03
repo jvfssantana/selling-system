@@ -78,7 +78,21 @@ public class TelaCarro extends JFrame {
 			}
 		});
 		btnComprarCarro.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnComprarCarro.setBounds(110, 162, 160, 23);
+		btnComprarCarro.setBounds(8, 121, 160, 23);
 		contentPane.add(btnComprarCarro);
+		
+		JButton btnNewButton = new JButton("Sair");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Sessao sessao = new Sessao();
+				sessao.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setBounds(287, 123, 89, 23);
+		contentPane.add(btnNewButton);
 	}
 }

@@ -29,6 +29,7 @@ public class TelaCliente extends JFrame {
 	private JTextPane txtpnSessoDoCliente;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
+	private JButton btnNewButton_2;
 
 	/**
 	 * Launch the application.
@@ -94,6 +95,20 @@ public class TelaCliente extends JFrame {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_1.setBounds(260, 141, 118, 23);
 		contentPane.add(btnNewButton_1);
+		
+		btnNewButton_2 = new JButton("Sair");
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Sessao sessao = new Sessao();
+				sessao.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
+		btnNewButton_2.setBounds(153, 203, 89, 23);
+		contentPane.add(btnNewButton_2);
 	}
 
 }

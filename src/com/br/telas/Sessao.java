@@ -133,10 +133,10 @@ public class Sessao extends JFrame {
 		JButton btnAcesso = new JButton("6 - Acesso");
 		btnAcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				
-//				TelaAcesso acesso = new TelaAcesso();
-//				acesso.setVisible(true);
-//				setVisible(false);
+				
+				TelaAcesso acesso = new TelaAcesso();
+				acesso.setVisible(true);
+				setVisible(false);
 				
 			}
 		});
